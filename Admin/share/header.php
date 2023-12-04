@@ -1,8 +1,12 @@
 <?php
+ 
+
 $hostname = $_SERVER['HTTP_HOST'];
 $port = $_SERVER['SERVER_PORT'];
 
 $base_url = "http://".$hostname."/banhang";
+
+
 ?>
 
 <!DOCTYPE html>
@@ -67,10 +71,10 @@ $base_url = "http://".$hostname."/banhang";
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
+        <a href="index3.html" class="nav-link">Trang chủ</a>
+      </li> 
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="#" class="nav-link"></a>
       </li>
     </ul>
 

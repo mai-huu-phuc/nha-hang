@@ -1,68 +1,72 @@
 <?php
       include "ShareView/header.php";
+     
+      $resultTable=array();
+      $query_get_id = "SELECT `id`, `tenBan`, `isBlock` FROM `banan` where isBlock<>true";
+    
+      $select_result = $connectMySql->query($query_get_id);
+    
+      if ($select_result->num_rows > 0) {
+          while($row = $select_result->fetch_assoc())
+          {
+              $resultTable[] = $row;
+          }  
+      }
+
 
 ?>
     <!-- end header section -->
   </div>
 
   <!-- book section -->
-  <section class="book_section layout_padding">
+  <section class="offer_section layout_padding-bottom">
+
     <div class="container">
       <div class="heading_container">
         <h2>
          Đặt bàn
         </h2>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form_container">
-            <form action="">
-              <div>
-                <input type="text" class="form-control" placeholder="Tên của bạn" />
-              </div>
-              <div>
-                <input type="text" class="form-control" placeholder="Số điện thoại" />
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="email của bạn" />
-              </div>
-              <div>
-                <select class="form-control nice-select wide">
-                  <option value="" disabled selected>
-                    bạn có bao nhiêu người
-                  </option>
-                  <option value="">
-                    2
-                  </option>
-                  <option value="">
-                    3
-                  </option>
-                  <option value="">
-                    4
-                  </option>
-                  <option value="">
-                    5
-                  </option>
-                </select>
-              </div>
-              <div>
-                <input type="date" class="form-control">
-              </div>
-              <div class="btn_box">
-                <button>
-                  Đặt ngay
-                </button>
-              </div>
-            </form>
+    
+      
+        
+        <div class="filters-content">
+          <div class="row grid" style="position: relative; height: 406.5px;">
+          <?php
+                foreach($resultTable as $table)
+                {
+
+                
+
+              ?>
+            <div class="col-sm-6 col-lg-4 all pizza" >
+             
+              <div class="box">
+              
+                  <div class="img-box">
+                    <img src=" images/banan.jpg" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <h5>
+                    <?php echo $table['tenBan'] ?>               </h5>
+                   
+                    <div class="options">
+                      <h6>
+                         Đặt ngay
+                      </h6>
+                      <a href="bookdatban.php?id=<?php echo $table['id']; ?>&&name=<?php echo  $table['tenBan']; ?>">
+                        <i class="fa fa-shopping-cart" style="font-size:24px;color:white"> </i>
+                      </a>
+                    </div>
+                  </div>
+               </div>
+                 
+            </div> <?php } ?>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="map_container ">
-            <div id="googleMap"></div>
-          </div>
-        </div>
+      
       </div>
     </div>
+    
   </section>
   <!-- end book section -->
 

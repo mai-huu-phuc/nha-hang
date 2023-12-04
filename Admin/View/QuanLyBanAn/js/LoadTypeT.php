@@ -28,7 +28,7 @@ foreach ($original_donvi as $key => $value_donvi) {
         'id' => $value_donvi['id'],
         'tenBan'=> $value_donvi['tenBan'],
         'isBlock'=> $value_donvi['isBlock'],
-        'isHidden'=> ($value_donvi['isBlock']==null||$value_donvi['isBlock']==false)?'Hiện':'Ẩn',
+        'isHidden'=> ($value_donvi['isBlock']==null||$value_donvi['isBlock']==false)?'Hoạt động':'Khóa',
     );
 }
 $final_donvi = json_encode($option_donvi);

@@ -4,6 +4,17 @@
     include '../../share/header.php';
 
     include '../../share/slide.php';
+    if(isset($_SESSION['logged_in'])){
+      if(isset($_SESSION['Per_id']))
+      { 
+        if($_SESSION['Per_id']==null)
+        {
+          echo '<script> window.location.href="'.$base_url.'/index.php"</script>';
+        }
+      }
+    }else{
+       echo '<script> window.location.href="'.$base_url.'/index.php"</script>';
+    }
     $resultUser;
     if (isset($_GET["id"])) {
       //show hien quy chuan tren tabulator

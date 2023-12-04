@@ -3,6 +3,9 @@ include "../../../../config/config.php";
 
 if(isset($_POST["nameTypeBaiViet"]))
 {
+
+   
+
     $nameFood = $_POST["nameTypeBaiViet"];
     $isBlock = $_POST["isBlock"];
     try {

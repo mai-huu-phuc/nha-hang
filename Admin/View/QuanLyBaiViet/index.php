@@ -4,6 +4,19 @@
     include '../../share/header.php';
 
     include '../../share/slide.php';
+
+    if(isset($_SESSION['logged_in'])){
+        if(isset($_SESSION['Per_id']))
+        { 
+          if($_SESSION['Per_id']==null)
+          {
+            echo '<script> window.location.href="'.$base_url.'/index.php"</script>';
+          }
+        }
+      }else{
+         echo '<script> window.location.href="'.$base_url.'/index.php"</script>';
+      }
+    
 ?>
 
 
@@ -86,7 +99,8 @@
                         url: "./js/deleteC.php",
                         data: messengerData,
                         success: function (response) {
-                            if (response == 1) {
+                            LoadDataSend();
+                            if (response == 11) {
                                 LoadDataSend();
                             } else {
                                 alert("Lỗi không thể thêm được");
@@ -119,7 +133,8 @@
                         data: datasend,
 
                         success: function (response) {
-                            if (response == 1) {
+                            LoadDataSend();
+                            if (response == 11) {
                                 LoadDataSend();
                             } else {
                                 console.log(response);
@@ -207,12 +222,22 @@ function LoadDataSend() {
                             data: null,
                             render: function(data, type, row) {
                                 var id_active = '';
-                                if (row.nameTypeBaiViet != null) {
-                                    id_active = row.nameTypeBaiViet;
+                                if (row.Title != null) {
+                                    id_active = row.Title;
                                 }
                                 return '<a href="./detailC.php?id='+row.id+'" >' + id_active + '<a >';
                             },
                             width: "20%",
+                        },
+                        {
+                            data: null,
+                            render: function(data, type, row) {
+                                var nameActive = '';
+                                if (row.nameTypeBaiViet != null) {
+                                    nameActive = row.nameTypeBaiViet;
+                                }
+                                return '<b>' + nameActive + '</b>';
+                            },
                         },
                         {
                             data: null,

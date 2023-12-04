@@ -4,7 +4,8 @@ include "../../../../config/config.php"
 <?php
 header('Content-Type:application/json');
 /*---- POST Send Data ----*/
-$querry_donvi = 'SELECT id, nameTypeBaiViet, isBlock FROM typebaiviet order by id';
+$querry_donvi = 'SELECT baiviet.id, `Typ_id`, `ngayTao`, baiviet.isBlock, `Title`, `Detail`, `noiBat`, `imageURL` 
+,typebaiviet.nameTypeBaiViet FROM `baiviet`, typebaiviet WHERE Typ_id=typebaiviet.id';
 // echo $querry_donvi;
 $result_donvi =$connectMySql->query($querry_donvi);
 
@@ -26,9 +27,13 @@ foreach ($original_donvi as $key => $value_donvi) {
     $option_donvi[] = array(
         'STT' => $key + 1,
         'id' => $value_donvi['id'],
-        'nameTypeBaiViet'=> $value_donvi['nameTypeBaiViet'],
+        'ngayTao'=> $value_donvi['ngayTao'],
+        'Title'=> $value_donvi['Title'],
         'isBlock'=> $value_donvi['isBlock'],
+        'nameTypeBaiViet'=> $value_donvi['nameTypeBaiViet'],
+
         'isHidden'=> ($value_donvi['isBlock']==null||$value_donvi['isBlock']==false)?'Hiện':'Ẩn',
+
     );
 }
 $final_donvi = json_encode($option_donvi);

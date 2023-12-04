@@ -4,6 +4,17 @@
     include '../../share/header.php';
 
     include '../../share/slide.php';
+    if(isset($_SESSION['logged_in'])){
+        if(isset($_SESSION['Per_id']))
+        { 
+          if($_SESSION['Per_id']==null)
+          {
+            echo '<script> window.location.href="'.$base_url.'/index.php"</script>';
+          }
+        }
+      }else{
+         echo '<script> window.location.href="'.$base_url.'/index.php"</script>';
+      }
 ?>
 
 
@@ -14,7 +25,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Hải sản</h1>
+            <h1 class="m-0">Quản lý bàn</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">

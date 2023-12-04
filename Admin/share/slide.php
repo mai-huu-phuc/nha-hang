@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="<?php echo $base_url; ?>" class="brand-link">
       <img src="<?php echo $base_url.'/images/logo.png'; ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Hải sản MH Phúc</span>
     </a>
@@ -18,7 +18,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
             <a href="<?php echo $base_url.'/Admin/View/QuanLyTypeFood/'; ?>" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="fa fa-anchor" style="font-size:24px"></i>
               <p>
                 Quản lý loại hải sản
    
@@ -28,7 +28,7 @@
           
           <li class="nav-item ">
             <a href="<?php echo $base_url.'/Admin/View/QuanLyNguoiDung/'; ?>" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="fa fa-address-book" style="font-size:24px"></i>
               <p>
                 Quản lý người dùng
        
@@ -37,7 +37,7 @@
           </li>
           <li class="nav-item ">
             <a href="<?php echo $base_url.'/Admin/View/QuanLyBaiViet/'; ?>" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="fa fa-comment" style="font-size:24px"></i>
               <p>
                 Quản lý bài viết
 
@@ -45,8 +45,17 @@
             </a>
           </li>
           <li class="nav-item ">
+            <a href="<?php echo $base_url.'/Admin/View/QuanLyTypeBV/'; ?>" class="nav-link ">
+            <i class="fa fa-comments" style="font-size:24px"></i>
+              <p>
+                Quản lý kiểu bài viết
+
+              </p>
+            </a>
+          </li>
+          <li class="nav-item ">
             <a href="<?php echo $base_url.'/Admin/View/QuanLyFood/'; ?>" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="fa fa-bath" style="font-size:24px"></i>
               <p>
                 Quản lý món ăn
 
@@ -54,7 +63,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a href="<?php echo $base_url.'/Admin/View/QuanLyDatBan/'; ?>" class="nav-link ">
+            <a href="<?php echo $base_url.'/Admin/View/QuanLyBanDat/'; ?>" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Quản lý đặt bàn
@@ -64,7 +73,7 @@
           </li>
           <li class="nav-item ">
             <a href="<?php echo $base_url.'/Admin/View/QuanLyHoaDon/'; ?>" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="fa fa-mobile" style="font-size:24px"></i>
               <p>
                 Quản lý Hóa đơn
               </p>
@@ -72,9 +81,18 @@
           </li>
           <li class="nav-item ">
             <a href="<?php echo $base_url.'/Admin/View/QuanLyPermission/'; ?>" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="fa fa-address-book" style="font-size:24px"></i>
               <p>
                 Quản lý Quyền 
+              </p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a href="<?php echo $base_url.'/Admin/View/QuanLyBanAn/'; ?>" class="nav-link ">
+            <i class="fa fa-archive" style="font-size:24px"></i>
+              <p>
+                Quản lý Bàn ăn
+
               </p>
             </a>
           </li>
