@@ -69,13 +69,6 @@
         date_default_timezone_set('Asia/Ho_Chi_Minh');     
         $today = date('Y-m-d H:i:s');
 
-        if($noiBat=="1"||$noiBat==1)
-        {
-            $sp=1;
-        }else
-        {
-            $sp=0;
-        }
         // var_dump(__DIR__);
         // var_dump($);
         move_uploaded_file($files_temp,"../../../images/".$unique_image);

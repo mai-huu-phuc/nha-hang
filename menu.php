@@ -115,6 +115,8 @@
 <script type="text/javascript">
   function AddCart(id)
   {
+    if(confirm("bạn có muốn thêm vao giỏ hàng không"))
+    {
     let data={
       name:$("#foodName"+id).val(),
       foodPrice:$("#foodPrice"+id).val(),
@@ -133,6 +135,7 @@
             console.log(response.responseText);
         }});
   }
+}
 </script>
   <!-- end food section -->
 

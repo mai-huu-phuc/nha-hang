@@ -205,7 +205,9 @@
   <script type="text/javascript">
   function AddCart(id)
   {
-    let data={
+    if(confirm("bạn có muốn thêm vao giỏ hàng không"))
+    {
+      let data={
       name:$("#foodName"+id).val(),
       foodPrice:$("#foodPrice"+id).val(),
       foodSoLuong:$("#foodSoLuong"+id).val(),
@@ -222,6 +224,8 @@
         },error: function(response) {
             console.log(response.responseText);
         }});
+    }
+   
   }
 </script>
  <?php
