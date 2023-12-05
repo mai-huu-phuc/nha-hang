@@ -5,7 +5,7 @@ include "../../../../config/config.php"
 header('Content-Type:application/json');
 /*---- POST Send Data ----*/
 $querry_donvi = 'SELECT donhang.id, `Ban_id`, `Acc_id`, `ngayTao`, `thoiGianGiao`, `ghiChu`, `thanhToan`, `maKhuyenMai`, `thoiGianKetThuc`,
- `datBan`,banan.tenBan,account.name FROM `donhang`, banan, account WHERE banan.id=Ban_id and account.id=Acc_id order by donhang.id';
+ `datBan`,account.name FROM `donhang`, account WHERE  account.id=Acc_id order by donhang.id';
 // echo $querry_donvi;
 $result_donvi =$connectMySql->query($querry_donvi);
 
@@ -34,7 +34,7 @@ foreach ($original_donvi as $key => $value_donvi) {
         'thanhToan'=> $value_donvi['thanhToan'],
         'thoiGianKetThuc'=> $value_donvi['thoiGianKetThuc'],
         'datBan'=> $value_donvi['datBan'],
-        'tenBan'=> $value_donvi['tenBan'],
+     
         'name'=> $value_donvi['name'],
     );
 }

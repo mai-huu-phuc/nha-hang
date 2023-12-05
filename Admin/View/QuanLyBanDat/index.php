@@ -251,7 +251,8 @@ function LoadDataSend() {
                         },
                         {
                             data: null,
-                            render: function(data, type, row) {
+                            render: function(data, type, row) {zalo
+                                
                                 var nameActive = '';
                                 if (row.thoiGianKetThuc != null) {
                                     nameActive = row.thoiGianKetThuc;

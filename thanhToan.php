@@ -49,7 +49,7 @@ if(isset($_POST['getBanDat']))
                              
                                 try{
                                     $query = "INSERT INTO `ct_donhang`(`id`, `Foo_id`, `Don_id`, `soluongDonHang`) 
-                                    VALUES ('$selected_id2','".$_SESSION['cart'][$i]['foodId']."','$query_get_id','".$_SESSION['cart'][$i]['foodSoLuong']."')";
+                                    VALUES ('$selected_id2','".$_SESSION['cart'][$i]['foodId']."','$selected_id','".$_SESSION['cart'][$i]['foodSoLuong']."')";
                     
                                     if ($connectMySql->query($query) === TRUE) {
                                 
@@ -66,7 +66,7 @@ if(isset($_POST['getBanDat']))
                                 
                                 try{
                                     $query = "INSERT INTO `ct_donhang`(`id`, `Foo_id`, `Don_id`, `soluongDonHang`) 
-                                    VALUES (1,'".$_SESSION['cart'][$i]['foodId']."','$query_get_id','".$_SESSION['foodSoLuong']."')";
+                                    VALUES (1,'".$_SESSION['cart'][$i]['foodId']."','$selected_id','".$_SESSION['cart'][$i]['foodSoLuong']."')";
                                     if ($connectMySql->query($query) === TRUE) {
                                 
                                        echo "Loi";
@@ -116,7 +116,7 @@ if(isset($_POST['getBanDat']))
                          
                             try{
                                 $query = "INSERT INTO `ct_donhang`(`id`, `Foo_id`, `Don_id`, `soluongDonHang`) 
-                                VALUES ('$selected_id2','".$_SESSION['cart'][$i]['foodId']."','$selected_id','".$_SESSION['cart'][$i]['foodSoLuong']."')";
+                                VALUES ('$selected_id2','".$_SESSION['cart'][$i]['foodId']."',1,'".$_SESSION['cart'][$i]['foodSoLuong']."')";
                 
                                 if ($connectMySql->query($query) === TRUE) {
                             

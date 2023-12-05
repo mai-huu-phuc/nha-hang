@@ -12,7 +12,7 @@ if(!isset($_POST['id_HoaDon']))
 
 /*---- POST Send Data ----*/
     $querry_donvi = 'SELECT ct_donhang.id, `Foo_id`, `Don_id`, `soluongDonHang`,food.tenMonAn,food.giaTien,food.image_URL 
-    FROM `ct_donhang`,food, donhang WHERE donhang.id=Don_id and Foo_id=food.id and Don_id='.$_POST['id_HoaDon'];
+    FROM `ct_donhang`,food WHERE  Foo_id=food.id and Don_id='.$_POST['id_HoaDon'];
     // echo $querry_donvi;
     $result_donvi =$connectMySql->query($querry_donvi);
 

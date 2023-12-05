@@ -22,7 +22,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Hải sản</h1>
+            <h1 class="m-0">Quản lý hóa đơn</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -221,7 +221,7 @@ function LoadDataSend() {
                                 if (row.name != null) {
                                     id_active = row.name;
                                 }
-                                return '<a href="./detailTypeC.php?id='+row.id+'" >' + id_active + '<a >';
+                                return '<a href="./detailHoaDon.php?id='+row.id+'" >' + id_active + '<a >';
                             },
                             width: "15%",
                         },
@@ -240,8 +240,8 @@ function LoadDataSend() {
                             data: null,
                             render: function(data, type, row) {
                                 var id_active = '';
-                                if (row.tenBan != null) {
-                                    id_active = row.tenBan;
+                                if (row.Ban_id != null) {
+                                    id_active = row.Ban_id;
                                 }
                                 return '<b>' + id_active + '</b>';
                             },

@@ -30,7 +30,7 @@
           
       }
     }else{
-      echo "<script> window.location.href='../index.php'</script>"
+      echo "<script> window.location.href='../index.php'</script>";
     }
     $resultBanAn=array();
     $query_get_id = "SELECT `id`, `tenBan` FROM `banan`";
@@ -98,9 +98,9 @@
                       <?php 
                         foreach ($resultNguoiDung as $nguoidung2) {
                           if($showthongtin["Acc_id"]==$nguoidung2['id']){
-                            echo '<option selected value="'.$nguoidung2['id'].'">'.$nguoidung2['name'].'|'+$nguoidung2['userName']+'</option>'; 
+                            echo '<option selected value="'.$nguoidung2['id'].'">'.$nguoidung2['name'].'|'.$nguoidung2['userName'].'</option>'; 
                           }else
-                          echo '<option value="'.$nguoidung2['id'].'">'.$nguoidung2['name'].'|'+$nguoidung2['userName']+'</option>'; 
+                          echo '<option value="'.$nguoidung2['id'].'">'.$nguoidung2['name'].'|'.$nguoidung2['userName'].'</option>'; 
                         }
                         
                       ?>
@@ -146,16 +146,17 @@
                     <?php
                         switch ($showthongtin['maKhuyenMai']) {
                           case 1:
-                              echo "  <option value="1">Tền Mặt</option>";
+                            
+                              echo '<option value="1">Tền Mặt</option>';
                               break;
                           case 2:
-                              echo " <option value="2">Đã Thanh toán</option>";
+                              echo ' <option value="2">Đã Thanh toán</option>';
                               break;
                           case 3:
-                              echo "<option value="3">Chưa thanh toán</option>";
+                              echo '<option value="3">Chưa thanh toán</option>';
                               break;
                           case 4:
-                            echo "<option value="4">Chuyển khoản</option>";
+                            echo '<option value="4">Chuyển khoản</option>';
                             break;
                         }
                     ?>
@@ -169,10 +170,10 @@
                           switch($showthongtin['datBan'])
                           {
                             case 0:
-                              echo "  <option value="false">Không</option>";
+                              echo "  <option value='false'>Không</option>";
                               break;
                             case 1:
-                              echo "<option value="true">Có</option>";
+                              echo "<option value='true'>Có</option>";
                               break;
                           }
                         
@@ -186,7 +187,7 @@
             <!-- /.card -->
           </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
@@ -204,7 +205,7 @@
                     <select id="Acc_id" class="form-control custom-select">
                       <?php 
                         foreach ($resultNguoiDung as $nguoidung2) {
-                          echo '<option value="'.$nguoidung2['id'].'">'.$nguoidung2['name'].'|'+$nguoidung2['userName']+'</option>'; 
+                          echo '<option value="'.$nguoidung2['id'].'">'.$nguoidung2['name'].'|'.$nguoidung2['userName'].'</option>'; 
                         }
                         
                       ?>
@@ -254,12 +255,12 @@
                   </select>
                 </div>
               </div>
-              <!-- /.card-body -->
+             
             </div>
-            <!-- /.card -->
+         
           </div>
           
-        </div>
+        </div> -->
         <div class="row">
           <div class=col-md-6>
               <h1>danh sách món ăn</h1>    
@@ -361,6 +362,7 @@
         });
 
         let table = $('#loadMonAn').DataTable({});
+        LoadMonAn();
         table.on('click', 'button', function (e) {
           table = $('#loadMonAn').DataTable();
 
@@ -400,7 +402,7 @@
           type: "POST",
           url: "../QuanLyFood/js/LoadF.php",
           success: function(response) {
-        
+            console.log(response);
               if ($.fn.dataTable.isDataTable('#danhSachMonAn')) {
 
                   $('#danhSachMonAn').DataTable().clear().destroy();
@@ -513,7 +515,7 @@
                                   if (row.id != null) {
                                       id_active = row.id;
                                   }
-                                  return '<input type="number" id="Soluong'+id+'" >';
+                                  return '<input type="number" id="Soluong'+id_active+'" >';
                               },
                               width: "15%",
                           },
@@ -529,16 +531,18 @@
           }
       });
     }
-    function LoadMonAn() { 
+    function LoadMonAn() {
+    
       let id_HoaDon={
         id_HoaDon:$("#id_HoaDon").val()
       }
+      console.log(id_HoaDon);
       $.ajax({
           type: "POST",
-          url: "../QuanLyFood/js/LoadF.php",
+          url: "./js/LoadMonAn.php",
           data: id_HoaDon,
           success: function(response) {
-        
+            console.log(response);
               if ($.fn.dataTable.isDataTable('#loadMonAn')) {
 
                   $('#loadMonAn').DataTable().clear().destroy();
