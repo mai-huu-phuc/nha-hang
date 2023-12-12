@@ -78,7 +78,10 @@
               </li>
               <li class="nav-item ">
                 <a class="nav-link" href="book.php">Đặt bàn 
-                 
+                 </a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="aboutme.php">Thông tin liên hệ  
                  </a>
               </li>
             </ul>
