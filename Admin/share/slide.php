@@ -96,6 +96,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item ">
+            <a href="<?php echo $base_url.'/Admin/View/QuanLyTrangChu/'; ?>" class="nav-link ">
+            <i class="fa fa-archive" style="font-size:24px"></i>
+              <p>
+                Quản lý thanh menu
+              </p>
+            </a>
+          </li>
           <!-- <li class="nav-header">EXAMPLES</li>
           <li class="nav-item"> -->
             <!-- <a href="pages/calendar.html" class="nav-link">

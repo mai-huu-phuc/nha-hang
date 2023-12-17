@@ -6,6 +6,18 @@
 
     $base_url = "http://".$hostname."/banhang";
 
+    $resultMenu=array();
+    $query_Menu = "SELECT name, linkURL FROM menu WHERE  isBlock=0";
+  
+    $select_result = $connectMySql->query($query_Menu);
+  
+    if ($select_result->num_rows > 0) {
+        while($row = $select_result->fetch_assoc())
+        {
+            $resultMenu[] = $row;
+        }  
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,20 +82,14 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
-              <li class="nav-item">
-                <a class="nav-link" href="index.php">Trang Chủ </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="menu.php">Menu</a>
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="book.php">Đặt bàn 
-                 </a>
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="aboutme.php">Thông tin liên hệ  
-                 </a>
-              </li>
+              <?php 
+              foreach($resultMenu as $item)
+              {
+                  echo '<li class="nav-item">
+                  <a class="nav-link" href="'.$item['linkURL'].'">'.$item['name'].'</a>
+                </li>';
+              }
+              ?>            
             </ul>
             <div class="user_option">
               <?php 

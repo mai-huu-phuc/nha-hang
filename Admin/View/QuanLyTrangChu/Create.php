@@ -15,22 +15,6 @@
     }else{
        echo '<script> window.location.href="'.$base_url.'/index.php"</script>';
     }
-    $showthongtin=array();
-    if (isset($_GET["id"])) {
-      //show hien quy chuan tren tabulator
-      
-      $query_get_id = "SELECT `id`, `nameFood`, `isBlock` FROM `typeoffood` where id=".$_GET["id"]." LIMIT 1";
-      $select_result = $connectMySql->query($query_get_id);
-
-      if ($select_result->num_rows > 0) {
-
-          $row = $select_result->fetch_assoc();
-          $showthongtin = $row;
-          
-      }
-    }else{
-      header("location:./index.php");
-    }
 ?>
 
  <div class="content-wrapper">
@@ -39,11 +23,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Cập nhật loại Hải sản</h1>
+            <h1 class="m-0">Thêm thanh menu</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Cập nhật loại Hải sản</a></li>
+              <li class="breadcrumb-item"><a href="#">Thêm thanh menu</a></li>
               <li class="breadcrumb-item active">Hải sản</li>
             </ol>
           </div><!-- /.col -->
@@ -59,7 +43,7 @@
           <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Cập nhật loại Hải sản</h3>
+                <h3 class="card-title">Thêm thanh menu</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -69,16 +53,18 @@
               </div>
               <div class="card-body" style="display: block;">
                 <div class="form-group">
-                  <label for="inputName">Tên</label>
-                  <input type="hidden" id="idType" value="<?php echo  $showthongtin['id']; ?>">
-                  <input type="text" id="nameFood" name="nameFood" class="form-control" value="<?php echo  $showthongtin['nameFood'] ?>">
+                  <label for="inputName">Ten</label>
+                  <input type="text" id="name" name="nameFood" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="inputStatus">Link URL</label>
+                  <input type="text" id="linkURL" name="" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="inputStatus">Trạng thái</label>
                   <select id="inputStatus" class="form-control custom-select">
-                  
-                    <option <?php $showthongtin['isBlock']==false ?  "selected": ""  ?> value="false">Hoạt Động</option>
-                    <option <?php $showthongtin['isBlock']==true ?  "selected": ""  ?> value="true">Khóa</option>
+                    <option value="1">Khóa</option>
+                    <option value="0">Hoạt Động</option>
                   </select>
                 </div>
               </div>
@@ -89,8 +75,8 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a class="btn btn-success" id="createType" > Cập nhật</a>
-                <a  class="btn btn-danger" id="backHome" herf="./index.php"> Quay Về</a>
+                <a class="btn btn-success" id="createType"> Thêm</a>
+                <a  class="btn btn-danger" id="backHome"> Quay Về</a>
             </div>
         </div>
       </div>
@@ -106,22 +92,23 @@
     if(confirm("Bạn có chắc muốn thêm không"))
     {
       if($("#nameFood").val()!=""){
-        let dataCreate={
-          id:$("#idType").val(),
+        let dataCreate=
+        {
           isBlock:$("#inputStatus").val(),
-          nameFood:$("#nameFood").val()
+          name:$("#name").val(),
+          linkURL:$("#linkURL").val(),
         };
         $.ajax({
           type: "POST",
-          url: "./js/updateType.php",
-          data:dataCreate,
+          url: "./js/create.php",
+          data: dataCreate,
           success: function(response) {
               if(response==1)
               {
-                alert("Cập nhật thành công ");
+                alert("Thêm thành công");
                 window.location.href="index.php"; 
               }else if(response==2){
-                alert("Cập nhật thất bại");
+                alert("Thêm thất bại");
               }else{
                 console.log(response);
                 alert("Đã có lỗi xảy ra");

@@ -19,7 +19,8 @@
     if (isset($_GET["id"])) {
       //show hien quy chuan tren tabulator
       
-      $query_get_id = "SELECT `id`, `nameFood`, `isBlock` FROM `typeoffood` where id=".$_GET["id"]." LIMIT 1";
+      $query_get_id = "SELECT `id`, `name`, linkURL,`isBlock` FROM `menu` where id=".$_GET["id"]." LIMIT 1";
+
       $select_result = $connectMySql->query($query_get_id);
 
       if ($select_result->num_rows > 0) {
@@ -29,7 +30,7 @@
           
       }
     }else{
-      header("location:./index.php");
+      echo '<script> window.location.href="'.$base_url.'/index.php"</script>';
     }
 ?>
 
@@ -39,11 +40,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Cập nhật loại Hải sản</h1>
+            <h1 class="m-0">cập nhật thanh Menu</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Cập nhật loại Hải sản</a></li>
+              <li class="breadcrumb-item"><a href="#">cập nhật thanh Menu</a></li>
               <li class="breadcrumb-item active">Hải sản</li>
             </ol>
           </div><!-- /.col -->
@@ -59,7 +60,7 @@
           <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Cập nhật loại Hải sản</h3>
+                <h3 class="card-title">Cập nhật thanh Menu</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -71,14 +72,19 @@
                 <div class="form-group">
                   <label for="inputName">Tên</label>
                   <input type="hidden" id="idType" value="<?php echo  $showthongtin['id']; ?>">
-                  <input type="text" id="nameFood" name="nameFood" class="form-control" value="<?php echo  $showthongtin['nameFood'] ?>">
+                  <input type="text" id="name" name="nameFood" class="form-control" value="<?php echo  $showthongtin['name'] ?>">
+                </div>
+                <div class="form-group">
+                  <label for="inputName">link URL</label>
+                  
+                  <input type="text" id="linkURL" name="nameFood" class="form-control" value="<?php echo  $showthongtin['linkURL'] ?>">
                 </div>
                 <div class="form-group">
                   <label for="inputStatus">Trạng thái</label>
                   <select id="inputStatus" class="form-control custom-select">
                   
-                    <option <?php $showthongtin['isBlock']==false ?  "selected": ""  ?> value="false">Hoạt Động</option>
-                    <option <?php $showthongtin['isBlock']==true ?  "selected": ""  ?> value="true">Khóa</option>
+                    <option <?php $showthongtin['isBlock']==0 ?  "selected": ""  ?> value="0">Hoạt Động</option>
+                    <option <?php $showthongtin['isBlock']==1 ?  "selected": ""  ?> value="1">Khóa</option>
                   </select>
                 </div>
               </div>
@@ -89,7 +95,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a class="btn btn-success" id="createType" > Cập nhật</a>
+                <a class="btn btn-success" id="createType" > Thêm</a>
                 <a  class="btn btn-danger" id="backHome" herf="./index.php"> Quay Về</a>
             </div>
         </div>
@@ -105,15 +111,16 @@
   $("#createType").click(()=>{
     if(confirm("Bạn có chắc muốn thêm không"))
     {
-      if($("#nameFood").val()!=""){
+      if($("#idType").val()!=""){
         let dataCreate={
           id:$("#idType").val(),
           isBlock:$("#inputStatus").val(),
-          nameFood:$("#nameFood").val()
+          linkURL:$("#linkURL").val(),
+          name:$("#name").val(),
         };
         $.ajax({
           type: "POST",
-          url: "./js/updateType.php",
+          url: "./js/update.php",
           data:dataCreate,
           success: function(response) {
               if(response==1)
